@@ -56,3 +56,74 @@ LIMIT 2;
 |----|------|---------------|--------|-------------|--------|--------|
 | 5 | Emily Davis | 1995-02-10 | emily.davis@outlook.com | 6677889900 | 55.5 | 160 |
 | 4 | James Brown | 2000-07-15 | james.brown@yahoo.com | 5566778899 | 80.25 | 175 |
+
+---
+
+## Modyfikacja danych
+
+W kolejnym etapie wykonano operacje aktualizacji, usuwania oraz modyfikacji struktury tabeli.
+
+**Polecenia SQL**
+
+```sql
+UPDATE patients
+SET email = 'john.updated@gmail.com'
+WHERE name = 'John Doe';
+
+DELETE FROM patients
+WHERE id = 3;
+
+ALTER TABLE patients
+ADD blood_type CHAR(3);
+
+UPDATE patients
+SET blood_type = 'O+'
+WHERE name = 'John Doe';
+
+UPDATE patients
+SET blood_type = 'AB+'
+WHERE name = 'Jane Smith';
+
+UPDATE patients
+SET blood_type = 'A-'
+WHERE name = 'James Brown';
+
+UPDATE patients
+SET blood_type = 'B+'
+WHERE name = 'Emily Davis';
+```
+
+---
+
+## Wyniki po modyfikacji danych
+
+**Query #1**
+
+```sql
+SELECT * FROM patients;
+```
+
+| id | name        | date_of_birth | email                                                     | phone_number | weight | height | blood_type |
+| -- | ----------- | ------------- | --------------------------------------------------------- | ------------ | ------ | ------ | ---------- |
+| 1  | John Doe    | 1985-06-15    | [john.updated@gmail.com](mailto:john.updated@gmail.com)   | 1234567890   | 72.5   | 180    | O+         |
+| 2  | Jane Smith  | 1990-03-20    | [jane.smith@gmail.com](mailto:jane.smith@gmail.com)       | 987654321    | 60.0   | 165    | AB+        |
+| 4  | James Brown | 2000-07-15    | [james.brown@yahoo.com](mailto:james.brown@yahoo.com)     | 5566778899   | 80.25  | 175    | A-         |
+| 5  | Emily Davis | 1995-02-10    | [emily.davis@outlook.com](mailto:emily.davis@outlook.com) | 6677889900   | 55.5   | 160    | B+         |
+
+---
+
+**Query #2**
+
+```sql
+SELECT *
+FROM patients
+ORDER BY id DESC
+LIMIT 2;
+```
+
+| id | name        | date_of_birth | email                                                     | phone_number | weight | height | blood_type |
+| -- | ----------- | ------------- | --------------------------------------------------------- | ------------ | ------ | ------ | ---------- |
+| 5  | Emily Davis | 1995-02-10    | [emily.davis@outlook.com](mailto:emily.davis@outlook.com) | 6677889900   | 55.5   | 160    | B+         |
+| 4  | James Brown | 2000-07-15    | [james.brown@yahoo.com](mailto:james.brown@yahoo.com)     | 5566778899   | 80.25  | 175    | A-         |
+
+---
