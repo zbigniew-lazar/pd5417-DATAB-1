@@ -44,13 +44,13 @@ VALUES
 SELECT * FROM patients;
 ```
 
-| id | name | date_of_birth | email | phone_number | weight | height |
-|----|------|--------------|--------|--------------|--------|--------|
-| 1 | John Doe | 1985-06-15 | john.doe@gmail.com | 1234567890 | 72.5 | 180 |
-| 2 | Jane Smith | 1990-03-20 | jane.smith@gmail.com | 987654321 | 60.0 | 165 |
-| 3 | Maria Garcia | 1978-12-05 | NULL | 1122334455 | 68.0 | 170 |
-| 4 | James Brown | 2000-07-15 | james.brown@yahoo.com | 5566778899 | 80.25 | 175 |
-| 5 | Emily Davis | 1995-02-10 | emily.davis@outlook.com | 6677889900 | 55.5 | 160 |
+| id | name         | date_of_birth | email                                                     | phone_number | weight | height |
+| -- | ------------ | ------------- | --------------------------------------------------------- | ------------ | ------ | ------ |
+| 1  | John Doe     | 1985-06-15    | [john.doe@gmail.com](mailto:john.doe@gmail.com)           | 1234567890   | 72.5   | 180    |
+| 2  | Jane Smith   | 1990-03-20    | [jane.smith@gmail.com](mailto:jane.smith@gmail.com)       | 987654321    | 60.0   | 165    |
+| 3  | Maria Garcia | 1978-12-05    | NULL                                                      | 1122334455   | 68.0   | 170    |
+| 4  | James Brown  | 2000-07-15    | [james.brown@yahoo.com](mailto:james.brown@yahoo.com)     | 5566778899   | 80.25  | 175    |
+| 5  | Emily Davis  | 1995-02-10    | [emily.davis@outlook.com](mailto:emily.davis@outlook.com) | 6677889900   | 55.5   | 160    |
 
 ---
 
@@ -62,11 +62,11 @@ FROM patients
 WHERE weight > 65;
 ```
 
-| id | name | date_of_birth | email | phone_number | weight | height |
-|----|------|--------------|--------|--------------|--------|--------|
-| 1 | John Doe | 1985-06-15 | john.doe@gmail.com | 1234567890 | 72.5 | 180 |
-| 3 | Maria Garcia | 1978-12-05 | NULL | 1122334455 | 68.0 | 170 |
-| 4 | James Brown | 2000-07-15 | james.brown@yahoo.com | 5566778899 | 80.25 | 175 |
+| id | name         | date_of_birth | email                                                 | phone_number | weight | height |
+| -- | ------------ | ------------- | ----------------------------------------------------- | ------------ | ------ | ------ |
+| 1  | John Doe     | 1985-06-15    | [john.doe@gmail.com](mailto:john.doe@gmail.com)       | 1234567890   | 72.5   | 180    |
+| 3  | Maria Garcia | 1978-12-05    | NULL                                                  | 1122334455   | 68.0   | 170    |
+| 4  | James Brown  | 2000-07-15    | [james.brown@yahoo.com](mailto:james.brown@yahoo.com) | 5566778899   | 80.25  | 175    |
 
 ---
 
@@ -78,13 +78,13 @@ FROM patients
 ORDER BY height DESC;
 ```
 
-| id | name | date_of_birth | email | phone_number | weight | height |
-|----|------|--------------|--------|--------------|--------|--------|
-| 1 | John Doe | 1985-06-15 | john.doe@gmail.com | 1234567890 | 72.5 | 180 |
-| 4 | James Brown | 2000-07-15 | james.brown@yahoo.com | 5566778899 | 80.25 | 175 |
-| 3 | Maria Garcia | 1978-12-05 | NULL | 1122334455 | 68.0 | 170 |
-| 2 | Jane Smith | 1990-03-20 | jane.smith@gmail.com | 987654321 | 60.0 | 165 |
-| 5 | Emily Davis | 1995-02-10 | emily.davis@outlook.com | 6677889900 | 55.5 | 160 |
+| id | name         | date_of_birth | email                                                     | phone_number | weight | height |
+| -- | ------------ | ------------- | --------------------------------------------------------- | ------------ | ------ | ------ |
+| 1  | John Doe     | 1985-06-15    | [john.doe@gmail.com](mailto:john.doe@gmail.com)           | 1234567890   | 72.5   | 180    |
+| 4  | James Brown  | 2000-07-15    | [james.brown@yahoo.com](mailto:james.brown@yahoo.com)     | 5566778899   | 80.25  | 175    |
+| 3  | Maria Garcia | 1978-12-05    | NULL                                                      | 1122334455   | 68.0   | 170    |
+| 2  | Jane Smith   | 1990-03-20    | [jane.smith@gmail.com](mailto:jane.smith@gmail.com)       | 987654321    | 60.0   | 165    |
+| 5  | Emily Davis  | 1995-02-10    | [emily.davis@outlook.com](mailto:emily.davis@outlook.com) | 6677889900   | 55.5   | 160    |
 
 ---
 
@@ -94,13 +94,13 @@ ORDER BY height DESC;
 SELECT *
 FROM patients
 ORDER BY id DESC
-LIMIT 2;
+LIMIT 2 OFFSET 0;
 ```
 
-| id | name | date_of_birth | email | phone_number | weight | height |
-|----|------|--------------|--------|--------------|--------|--------|
-| 5 | Emily Davis | 1995-02-10 | emily.davis@outlook.com | 6677889900 | 55.5 | 160 |
-| 4 | James Brown | 2000-07-15 | james.brown@yahoo.com | 5566778899 | 80.25 | 175 |
+| id | name        | date_of_birth | email                                                     | phone_number | weight | height |
+| -- | ----------- | ------------- | --------------------------------------------------------- | ------------ | ------ | ------ |
+| 5  | Emily Davis | 1995-02-10    | [emily.davis@outlook.com](mailto:emily.davis@outlook.com) | 6677889900   | 55.5   | 160    |
+| 4  | James Brown | 2000-07-15    | [james.brown@yahoo.com](mailto:james.brown@yahoo.com)     | 5566778899   | 80.25  | 175    |
 
 ---
 
@@ -122,7 +122,7 @@ ALTER TABLE patients
 ADD blood_type CHAR(3);
 
 UPDATE patients
-SET blood_type = 'O+'
+SET blood_type = '0+'
 WHERE name = 'John Doe';
 
 UPDATE patients
@@ -148,12 +148,12 @@ WHERE name = 'Emily Davis';
 SELECT * FROM patients;
 ```
 
-| id | name | date_of_birth | email | phone_number | weight | height | blood_type |
-|----|------|--------------|--------|--------------|--------|--------|------------|
-| 1 | John Doe | 1985-06-15 | john.updated@gmail.com | 1234567890 | 72.5 | 180 | O+ |
-| 2 | Jane Smith | 1990-03-20 | jane.smith@gmail.com | 987654321 | 60.0 | 165 | AB+ |
-| 4 | James Brown | 2000-07-15 | james.brown@yahoo.com | 5566778899 | 80.25 | 175 | A- |
-| 5 | Emily Davis | 1995-02-10 | emily.davis@outlook.com | 6677889900 | 55.5 | 160 | B+ |
+| id | name        | date_of_birth | email                                                     | phone_number | weight | height | blood_type |
+| -- | ----------- | ------------- | --------------------------------------------------------- | ------------ | ------ | ------ | ---------- |
+| 1  | John Doe    | 1985-06-15    | [john.updated@gmail.com](mailto:john.updated@gmail.com)   | 1234567890   | 72.5   | 180    | 0+         |
+| 2  | Jane Smith  | 1990-03-20    | [jane.smith@gmail.com](mailto:jane.smith@gmail.com)       | 987654321    | 60.0   | 165    | AB+        |
+| 4  | James Brown | 2000-07-15    | [james.brown@yahoo.com](mailto:james.brown@yahoo.com)     | 5566778899   | 80.25  | 175    | A-         |
+| 5  | Emily Davis | 1995-02-10    | [emily.davis@outlook.com](mailto:emily.davis@outlook.com) | 6677889900   | 55.5   | 160    | B+         |
 
 ---
 
@@ -163,13 +163,13 @@ SELECT * FROM patients;
 SELECT *
 FROM patients
 ORDER BY id DESC
-LIMIT 2;
+LIMIT 2 OFFSET 0;
 ```
 
-| id | name | date_of_birth | email | phone_number | weight | height | blood_type |
-|----|------|--------------|--------|--------------|--------|--------|------------|
-| 5 | Emily Davis | 1995-02-10 | emily.davis@outlook.com | 6677889900 | 55.5 | 160 | B+ |
-| 4 | James Brown | 2000-07-15 | james.brown@yahoo.com | 5566778899 | 80.25 | 175 | A- |
+| id | name        | date_of_birth | email                                                     | phone_number | weight | height | blood_type |
+| -- | ----------- | ------------- | --------------------------------------------------------- | ------------ | ------ | ------ | ---------- |
+| 5  | Emily Davis | 1995-02-10    | [emily.davis@outlook.com](mailto:emily.davis@outlook.com) | 6677889900   | 55.5   | 160    | B+         |
+| 4  | James Brown | 2000-07-15    | [james.brown@yahoo.com](mailto:james.brown@yahoo.com)     | 5566778899   | 80.25  | 175    | A-         |
 
 ---
 
