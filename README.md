@@ -104,7 +104,7 @@ LIMIT 2 OFFSET 0;
 
 ---
 
-# Modyfikacja danych
+# Modyfikacja danych i struktury tabeli
 
 W kolejnym etapie wykonano operacje aktualizacji danych, usunięcia rekordu oraz modyfikacji struktury tabeli.
 
@@ -122,7 +122,7 @@ ALTER TABLE patients
 ADD blood_type CHAR(3);
 
 UPDATE patients
-SET blood_type = '0+'
+SET blood_type = 'O+'
 WHERE name = 'John Doe';
 
 UPDATE patients
@@ -150,7 +150,7 @@ SELECT * FROM patients;
 
 | id | name        | date_of_birth | email                                                     | phone_number | weight | height | blood_type |
 | -- | ----------- | ------------- | --------------------------------------------------------- | ------------ | ------ | ------ | ---------- |
-| 1  | John Doe    | 1985-06-15    | [john.updated@gmail.com](mailto:john.updated@gmail.com)   | 1234567890   | 72.5   | 180    | 0+         |
+| 1  | John Doe    | 1985-06-15    | [john.updated@gmail.com](mailto:john.updated@gmail.com)   | 1234567890   | 72.5   | 180    | O+         |
 | 2  | Jane Smith  | 1990-03-20    | [jane.smith@gmail.com](mailto:jane.smith@gmail.com)       | 987654321    | 60.0   | 165    | AB+        |
 | 4  | James Brown | 2000-07-15    | [james.brown@yahoo.com](mailto:james.brown@yahoo.com)     | 5566778899   | 80.25  | 175    | A-         |
 | 5  | Emily Davis | 1995-02-10    | [emily.davis@outlook.com](mailto:emily.davis@outlook.com) | 6677889900   | 55.5   | 160    | B+         |
@@ -173,4 +173,4 @@ LIMIT 2 OFFSET 0;
 
 ---
 
-Projekt wykonano w środowisku DB Fiddle (MySQL v5.7).
+Autor: Zbigniew Lazar
