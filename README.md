@@ -1,49 +1,94 @@
 # pd5417-DATAB-1
-## Wyniki zapytań SQL
 
-### 1. Wyświetlenie wszystkich pacjentów
+## Opis projektu
+
+Celem zadania było praktyczne wykorzystanie podstawowych poleceń SQL w systemie MySQL v5.7. W ramach projektu utworzono tabelę pacjentów, dodano przykładowe dane, wykonano zapytania wyszukujące oraz przeprowadzono modyfikacje danych i struktury tabeli.
+
+---
+
+# Definicja tabeli i dane testowe
+
+## Schemat bazy danych
+
+```sql
+CREATE TABLE patients (
+    id INT PRIMARY KEY,
+    name VARCHAR(255),
+    date_of_birth DATE,
+    email VARCHAR(255),
+    phone_number VARCHAR(20),
+    weight DECIMAL(5,2),
+    height INT
+);
+```
+
+## Wstawienie danych
+
+```sql
+INSERT INTO patients (id, name, date_of_birth, email, phone_number, weight, height)
+VALUES
+(1, 'John Doe', '1985-06-15', 'john.doe@gmail.com', '1234567890', 72.50, 180),
+(2, 'Jane Smith', '1990-03-20', 'jane.smith@gmail.com', '987654321', 60.00, 165),
+(3, 'Maria Garcia', '1978-12-05', NULL, '1122334455', 68.00, 170),
+(4, 'James Brown', '2000-07-15', 'james.brown@yahoo.com', '5566778899', 80.25, 175),
+(5, 'Emily Davis', '1995-02-10', 'emily.davis@outlook.com', '6677889900', 55.50, 160);
+```
+
+---
+
+# Wyniki zapytań SQL
+
+## 1. Wyświetlenie wszystkich pacjentów
 
 ```sql
 SELECT * FROM patients;
 ```
 
 | id | name | date_of_birth | email | phone_number | weight | height |
-|----|------|---------------|--------|-------------|--------|--------|
+|----|------|--------------|--------|--------------|--------|--------|
 | 1 | John Doe | 1985-06-15 | john.doe@gmail.com | 1234567890 | 72.5 | 180 |
 | 2 | Jane Smith | 1990-03-20 | jane.smith@gmail.com | 987654321 | 60.0 | 165 |
-| 3 | Maria Garcia | 1978-12-05 | | 1122334455 | 68.0 | 170 |
+| 3 | Maria Garcia | 1978-12-05 | NULL | 1122334455 | 68.0 | 170 |
 | 4 | James Brown | 2000-07-15 | james.brown@yahoo.com | 5566778899 | 80.25 | 175 |
 | 5 | Emily Davis | 1995-02-10 | emily.davis@outlook.com | 6677889900 | 55.5 | 160 |
 
-### 2. Pacjenci o masie większej niż 65 kg
+---
+
+## 2. Pacjenci o masie większej niż 65 kg
 
 ```sql
-SELECT * FROM patients
+SELECT *
+FROM patients
 WHERE weight > 65;
 ```
 
 | id | name | date_of_birth | email | phone_number | weight | height |
-|----|------|---------------|--------|-------------|--------|--------|
+|----|------|--------------|--------|--------------|--------|--------|
 | 1 | John Doe | 1985-06-15 | john.doe@gmail.com | 1234567890 | 72.5 | 180 |
-| 3 | Maria Garcia | 1978-12-05 | | 1122334455 | 68.0 | 170 |
+| 3 | Maria Garcia | 1978-12-05 | NULL | 1122334455 | 68.0 | 170 |
 | 4 | James Brown | 2000-07-15 | james.brown@yahoo.com | 5566778899 | 80.25 | 175 |
 
-### 3. Pacjenci posortowani według wzrostu malejąco
+---
+
+## 3. Pacjenci posortowani według wzrostu malejąco
 
 ```sql
-SELECT * FROM patients
+SELECT *
+FROM patients
 ORDER BY height DESC;
 ```
 
 | id | name | date_of_birth | email | phone_number | weight | height |
-|----|------|---------------|--------|-------------|--------|--------|
+|----|------|--------------|--------|--------------|--------|--------|
 | 1 | John Doe | 1985-06-15 | john.doe@gmail.com | 1234567890 | 72.5 | 180 |
 | 4 | James Brown | 2000-07-15 | james.brown@yahoo.com | 5566778899 | 80.25 | 175 |
-| 3 | Maria Garcia | 1978-12-05 | | 1122334455 | 68.0 | 170 |
+| 3 | Maria Garcia | 1978-12-05 | NULL | 1122334455 | 68.0 | 170 |
 | 2 | Jane Smith | 1990-03-20 | jane.smith@gmail.com | 987654321 | 60.0 | 165 |
 | 5 | Emily Davis | 1995-02-10 | emily.davis@outlook.com | 6677889900 | 55.5 | 160 |
 
-### 4. Dwa ostatnie rekordy tabeli
+---
+
+## 4. Dwa ostatnie rekordy tabeli
 
 ```sql
 SELECT *
@@ -53,17 +98,17 @@ LIMIT 2;
 ```
 
 | id | name | date_of_birth | email | phone_number | weight | height |
-|----|------|---------------|--------|-------------|--------|--------|
+|----|------|--------------|--------|--------------|--------|--------|
 | 5 | Emily Davis | 1995-02-10 | emily.davis@outlook.com | 6677889900 | 55.5 | 160 |
 | 4 | James Brown | 2000-07-15 | james.brown@yahoo.com | 5566778899 | 80.25 | 175 |
 
 ---
 
-## Modyfikacja danych
+# Modyfikacja danych
 
-W kolejnym etapie wykonano operacje aktualizacji, usuwania oraz modyfikacji struktury tabeli.
+W kolejnym etapie wykonano operacje aktualizacji danych, usunięcia rekordu oraz modyfikacji struktury tabeli.
 
-**Polecenia SQL**
+## Wykonane polecenia SQL
 
 ```sql
 UPDATE patients
@@ -95,24 +140,24 @@ WHERE name = 'Emily Davis';
 
 ---
 
-## Wyniki po modyfikacji danych
+# Wyniki po modyfikacji danych
 
-**Query #1**
+## 1. Wszystkie rekordy po modyfikacji
 
 ```sql
 SELECT * FROM patients;
 ```
 
-| id | name        | date_of_birth | email                                                     | phone_number | weight | height | blood_type |
-| -- | ----------- | ------------- | --------------------------------------------------------- | ------------ | ------ | ------ | ---------- |
-| 1  | John Doe    | 1985-06-15    | [john.updated@gmail.com](mailto:john.updated@gmail.com)   | 1234567890   | 72.5   | 180    | O+         |
-| 2  | Jane Smith  | 1990-03-20    | [jane.smith@gmail.com](mailto:jane.smith@gmail.com)       | 987654321    | 60.0   | 165    | AB+        |
-| 4  | James Brown | 2000-07-15    | [james.brown@yahoo.com](mailto:james.brown@yahoo.com)     | 5566778899   | 80.25  | 175    | A-         |
-| 5  | Emily Davis | 1995-02-10    | [emily.davis@outlook.com](mailto:emily.davis@outlook.com) | 6677889900   | 55.5   | 160    | B+         |
+| id | name | date_of_birth | email | phone_number | weight | height | blood_type |
+|----|------|--------------|--------|--------------|--------|--------|------------|
+| 1 | John Doe | 1985-06-15 | john.updated@gmail.com | 1234567890 | 72.5 | 180 | O+ |
+| 2 | Jane Smith | 1990-03-20 | jane.smith@gmail.com | 987654321 | 60.0 | 165 | AB+ |
+| 4 | James Brown | 2000-07-15 | james.brown@yahoo.com | 5566778899 | 80.25 | 175 | A- |
+| 5 | Emily Davis | 1995-02-10 | emily.davis@outlook.com | 6677889900 | 55.5 | 160 | B+ |
 
 ---
 
-**Query #2**
+## 2. Dwa ostatnie rekordy po modyfikacji
 
 ```sql
 SELECT *
@@ -121,9 +166,11 @@ ORDER BY id DESC
 LIMIT 2;
 ```
 
-| id | name        | date_of_birth | email                                                     | phone_number | weight | height | blood_type |
-| -- | ----------- | ------------- | --------------------------------------------------------- | ------------ | ------ | ------ | ---------- |
-| 5  | Emily Davis | 1995-02-10    | [emily.davis@outlook.com](mailto:emily.davis@outlook.com) | 6677889900   | 55.5   | 160    | B+         |
-| 4  | James Brown | 2000-07-15    | [james.brown@yahoo.com](mailto:james.brown@yahoo.com)     | 5566778899   | 80.25  | 175    | A-         |
+| id | name | date_of_birth | email | phone_number | weight | height | blood_type |
+|----|------|--------------|--------|--------------|--------|--------|------------|
+| 5 | Emily Davis | 1995-02-10 | emily.davis@outlook.com | 6677889900 | 55.5 | 160 | B+ |
+| 4 | James Brown | 2000-07-15 | james.brown@yahoo.com | 5566778899 | 80.25 | 175 | A- |
 
 ---
+
+Projekt wykonano w środowisku DB Fiddle (MySQL v5.7).
